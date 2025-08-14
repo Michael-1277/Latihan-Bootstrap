@@ -1,81 +1,24 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevLinux - IT Developer Portfolio</title>
+    <title>DevPro - IT Developer Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --terminal-green: #00ff00;
-            --terminal-dark: #0d1117;
-            --ubuntu-orange: #e95420;
-            --linux-blue: #0066cc;
-        }
-        
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-        
-        .terminal-prompt {
-            color: var(--terminal-green);
-        }
-        
-        .section-title {
-            border-left: 4px solid var(--ubuntu-orange);
-            padding-left: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .card-linux {
-            background-color: #2d3748;
-            border: 1px solid #4a5568;
-            transition: all 0.3s ease;
-        }
-        
-        .card-linux:hover {
-            border-color: var(--terminal-green);
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-        }
-        
-        .btn-terminal {
-            background-color: var(--terminal-dark);
-            border: 2px solid var(--terminal-green);
-            color: var(--terminal-green);
-            font-family: 'Courier New', monospace;
-        }
-        
-        .btn-terminal:hover {
-            background-color: var(--terminal-green);
-            color: var(--terminal-dark);
-        }
-        
-        .progress-bar-linux {
-            background-color: var(--ubuntu-orange);
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end);
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-    </style>
+    <link href="assets/css/style.css" rel="stylesheet">
+
 </head>
+
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" 
+     style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('assets/img/head-bg.png');; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;"">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fab fa-linux me-2 text-warning"></i>
-                <span class="terminal-prompt">user@devlinux:~$</span>
+                <img src="assets/img/logo.png" alt="My Logo" class="img-logo">
+                <span class="terminal-prompt">MICHAEL.ID</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -100,22 +43,24 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-vh-100 d-flex align-items-center" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);">
+    <section id="home" class="min-vh-100 d-flex align-items-center"
+        style="background: linear-gradient(rgba(45, 55, 73, 1), rgba(0, 0, 0, 0.9)), url('assets/img/bg-2.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="container text-center">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <h1 class="display-4 mb-4 terminal-prompt typewriter">
-                        ./welcome_to_linux_dev.sh
+                        Welcome to My Portfolio
                     </h1>
                     <p class="lead mb-4 text-light">
-                        <span class="terminal-prompt">$</span> echo "Passionate Linux System Administrator & Full Stack Developer"
+                        <span class="terminal-prompt">#</span> Hi, I'm Michael Nugroho 
                     </p>
-                    <p class="mb-4 text-muted">
-                        Mengembangkan solusi teknologi dengan kekuatan open source. Spesialisasi dalam Linux server administration, DevOps, dan pengembangan aplikasi modern.
+                    <p class="mb-4 text-secondary">
+                        Crafting innovative technology solutions with modern development practices. Specializing in full-stack development, 
+                        system architecture, and building scalable applications.
                     </p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
                         <button class="btn btn-terminal" onclick="scrollToSection('services')">
-                            <i class="fas fa-terminal me-2"></i>ls ./services
+                            <i class="fas fa-code me-2"></i>View Services
                         </button>
                         <button class="btn btn-outline-success" onclick="scrollToSection('contact')">
                             <i class="fas fa-envelope me-2"></i>Contact Me
@@ -138,11 +83,11 @@
                 <div class="col-md-4">
                     <div class="card card-linux h-100">
                         <div class="card-body text-center p-4">
-                            <i class="fab fa-linux fa-3x text-warning mb-3"></i>
-                            <h5 class="card-title terminal-prompt">Linux Administration</h5>
+                            <i class="fas fa-server fa-3x text-warning mb-3"></i>
+                            <h5 class="card-title terminal-prompt">Backend Development</h5>
                             <p class="card-text text-light">
-                                Konfigurasi dan maintenance server Linux (Ubuntu, CentOS, Debian). 
-                                Setup monitoring, security, dan optimisasi performa sistem.
+                                Building robust server-side applications and APIs using modern frameworks.
+                                Database design, optimization, and system architecture planning.
                             </p>
                         </div>
                     </div>
@@ -153,8 +98,8 @@
                             <i class="fas fa-code fa-3x text-success mb-3"></i>
                             <h5 class="card-title terminal-prompt">Full Stack Development</h5>
                             <p class="card-text text-light">
-                                Pengembangan aplikasi web modern menggunakan React, Node.js, 
-                                Python Django, dan database management pada environment Linux.
+                                Creating modern web applications using React, Node.js,
+                                Python Django, and comprehensive database management solutions.
                             </p>
                         </div>
                     </div>
@@ -163,10 +108,10 @@
                     <div class="card card-linux h-100">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
-                            <h5 class="card-title terminal-prompt">DevOps & CI/CD</h5>
+                            <h5 class="card-title terminal-prompt">DevOps & Automation</h5>
                             <p class="card-text text-light">
-                                Implementasi Docker, Kubernetes, Jenkins, dan Git workflow. 
-                                Automation deployment dan infrastructure as code.
+                                Implementing CI/CD pipelines, containerization with Docker,
+                                cloud deployment, and automated testing workflows.
                             </p>
                         </div>
                     </div>
@@ -186,17 +131,17 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4">
                     <p class="text-light mb-4">
-                        <span class="terminal-prompt">cat /etc/developer-info</span>
+                        <span class="terminal-prompt">console.log('developer-info')</span>
                     </p>
                     <p class="text-light">
-                        Seorang Linux enthusiast dengan pengalaman 5+ tahun dalam system administration dan software development. 
-                        Percaya pada filosofi open source dan selalu eager untuk belajar teknologi baru.
+                        A passionate software developer with 5+ years of experience in full-stack development and system design.
+                        Committed to writing clean, efficient code and staying current with emerging technologies.
                     </p>
-                    
+
                     <h5 class="section-title text-warning mt-4">Technical Skills</h5>
                     <div class="mb-3">
                         <div class="d-flex justify-content-between">
-                            <span class="text-light">Linux System Administration</span>
+                            <span class="text-light">Full Stack Development</span>
                             <span class="terminal-prompt">95%</span>
                         </div>
                         <div class="progress">
@@ -223,7 +168,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h5 class="section-title text-warning">Performance Metrics</h5>
+                    <h5 class="section-title text-warning">Achievement Metrics</h5>
                     <div class="card card-linux p-4">
                         <div class="row text-center">
                             <div class="col-6">
@@ -232,11 +177,11 @@
                             </div>
                             <div class="col-6">
                                 <h3 class="terminal-prompt">99.9%</h3>
-                                <p class="text-muted">Server Uptime</p>
+                                <p class="text-muted">Code Quality</p>
                             </div>
                             <div class="col-6">
                                 <h3 class="terminal-prompt">24/7</h3>
-                                <p class="text-muted">System Monitoring</p>
+                                <p class="text-muted">Support Available</p>
                             </div>
                             <div class="col-6">
                                 <h3 class="terminal-prompt">5+</h3>
@@ -263,25 +208,28 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="name" class="form-label text-light">
-                                    <span class="terminal-prompt">$</span> echo $NAME
+                                    <span class="terminal-prompt">></span> Your Name
                                 </label>
-                                <input type="text" class="form-control bg-secondary text-light border-success" id="name" required>
+                                <input type="text" class="form-control bg-secondary text-light border-success" id="name"
+                                    required>
                             </div>
                             <div class="col-md-6">
                                 <label for="email" class="form-label text-light">
-                                    <span class="terminal-prompt">$</span> echo $EMAIL
+                                    <span class="terminal-prompt">></span> Your Email
                                 </label>
-                                <input type="email" class="form-control bg-secondary text-light border-success" id="email" required>
+                                <input type="email" class="form-control bg-secondary text-light border-success"
+                                    id="email" required>
                             </div>
                             <div class="col-12">
                                 <label for="message" class="form-label text-light">
-                                    <span class="terminal-prompt">$</span> cat message.txt
+                                    <span class="terminal-prompt">></span> Your Message
                                 </label>
-                                <textarea class="form-control bg-secondary text-light border-success" id="message" rows="5" required></textarea>
+                                <textarea class="form-control bg-secondary text-light border-success" id="message"
+                                    rows="5" required></textarea>
                             </div>
                             <div class="col-12 text-center">
                                 <button type="submit" class="btn btn-terminal">
-                                    <i class="fas fa-paper-plane me-2"></i>./send_message.sh
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
                                 </button>
                             </div>
                         </div>
@@ -295,9 +243,9 @@
     <footer class="py-4 text-center" style="background-color: #1a202c;">
         <div class="container">
             <p class="text-muted mb-2">
-                <span class="terminal-prompt">user@devlinux:~$</span> whoami
+                <span class="terminal-prompt">developer@portfolio:~$</span> status
             </p>
-            <p class="text-light mb-3">© 2025 DevLinux Portfolio. Built with ❤️ and Open Source</p>
+            <p class="text-light mb-3">© 2025 Michael Nugroho. Built with ❤️ and Modern Tech</p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="#" class="text-success"><i class="fab fa-github fa-2x"></i></a>
                 <a href="#" class="text-primary"><i class="fab fa-linkedin fa-2x"></i></a>
@@ -330,18 +278,18 @@
         });
 
         // Form validation
-        (function() {
+        (function () {
             'use strict';
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 const forms = document.getElementsByClassName('needs-validation');
-                Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
                         if (form.checkValidity() === false) {
                             event.preventDefault();
                             event.stopPropagation();
                         } else {
                             event.preventDefault();
-                            alert('./message_sent_successfully.sh\n\nTerima kasih! Pesan Anda telah dikirim.');
+                            alert('Message sent successfully!\n\nTerima kasih! Pesan Anda telah dikirim.');
                         }
                         form.classList.add('was-validated');
                     }, false);
@@ -350,10 +298,10 @@
         })();
 
         // Active navigation highlighting
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 100;
@@ -371,4 +319,5 @@
         });
     </script>
 </body>
+
 </html>

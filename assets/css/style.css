@@ -1,57 +1,70 @@
-html,
-body {
-    font-family: 'Arial', sans-serif;
-    color: #555;
-}
+ :root {
+     --terminal-green: #00ff00;
+     --terminal-dark: #0d1117;
+     --ubuntu-orange: #e95420;
+     --linux-blue: #0066cc;
+ }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
+ body {
+     font-family: 'Courier New', monospace;
+     background-color: #1e1e1e;
+     color: #ffffff;
+ }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-}
+ .terminal-prompt {
+     color: var(--terminal-green);
+ }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: white;
-}
+ .section-title {
+     border-left: 4px solid var(--ubuntu-orange);
+     padding-left: 1rem;
+     margin-bottom: 2rem;
+ }
 
-.hero {
-    background: linear-gradient(135deg, #f0f5f9, #e8eef2);
-    padding: 100px 0;
-}
+ .card-linux {
+     background-color: #2d3748;
+     border: 1px solid #4a5568;
+     transition: all 0.3s ease;
+ }
 
-.hero h1 {
-    color: #333;
-}
+ .card-linux:hover {
+     border-color: var(--terminal-green);
+     box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+ }
 
-.service-card {
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
+ .btn-terminal {
+     background-color: var(--terminal-dark);
+     border: 2px solid var(--terminal-green);
+     color: var(--terminal-green);
+     font-family: 'Courier New', monospace;
+ }
 
-.service-card:hover {
-    transform: translateY(-5px);
-}
+ .btn-terminal:hover {
+     background-color: var(--terminal-green);
+     color: var(--terminal-dark);
+ }
 
-.service-card .card-body {
-    padding: 20px;
-}
+ .progress-bar-linux {
+     background-color: var(--ubuntu-orange);
+ }
 
-.service-card h5 {
-    color: #0d6efd;
-}
+ .typewriter {
+     overflow: hidden;
+     white-space: nowrap;
+     animation: typing 3s steps(40, end);
+ }
 
-#about {
-    background-color: #f8f9fa;
-}
+ @keyframes typing {
+     from {
+         width: 0
+     }
 
-#contact {
-    background-color: #fff;
-}
+     to {
+         width: 100%
+     }
+ }
 
-footer {
-    background-color: #343a40;
-}
+ .img-logo {
+     width: 30px;
+     height: 30px;
+ }
