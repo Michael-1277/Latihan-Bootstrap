@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevPro - IT Developer Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Web-Bootstrap</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" 
-     style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('assets/img/head-bg.png');; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;"">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+        style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('assets/img/head-bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="assets/img/logo.png" alt="My Logo" class="img-logo">
@@ -52,10 +51,11 @@
                         Welcome to My Portfolio
                     </h1>
                     <p class="lead mb-4 text-light">
-                        <span class="terminal-prompt">#</span> Hi, I'm Michael Nugroho 
+                        <span class="terminal-prompt">#</span> Hi, I'm Michael Nugroho
                     </p>
                     <p class="mb-4 text-secondary">
-                        Crafting innovative technology solutions with modern development practices. Specializing in full-stack development, 
+                        Crafting innovative technology solutions with modern development practices. Specializing in
+                        full-stack development,
                         system architecture, and building scalable applications.
                     </p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
@@ -134,38 +134,13 @@
                         <span class="terminal-prompt">console.log('developer-info')</span>
                     </p>
                     <p class="text-light">
-                        A passionate software developer with 5+ years of experience in full-stack development and system design.
-                        Committed to writing clean, efficient code and staying current with emerging technologies.
+                        I am a passionate software developer with over five years of experience in full-stack
+                        development, system architecture, and end-to-end software delivery. My expertise spans designing
+                        scalable systems, building intuitive user interfaces, and optimizing backend processes for
+                        performance and reliability. I take pride in writing clean, efficient, and maintainable code,
+                        following best practices and industry standards.
                     </p>
 
-                    <h5 class="section-title text-warning mt-4">Technical Skills</h5>
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <span class="text-light">Full Stack Development</span>
-                            <span class="terminal-prompt">95%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-linux" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <span class="text-light">Python & Django</span>
-                            <span class="terminal-prompt">90%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-linux" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <span class="text-light">JavaScript & React</span>
-                            <span class="terminal-prompt">85%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-linux" style="width: 85%"></div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="section-title text-warning">Achievement Metrics</h5>
@@ -173,20 +148,40 @@
                         <div class="row text-center">
                             <div class="col-6">
                                 <h3 class="terminal-prompt">50+</h3>
-                                <p class="text-muted">Projects Completed</p>
+                                <p class="text-secondary">Projects Completed</p>
                             </div>
                             <div class="col-6">
                                 <h3 class="terminal-prompt">99.9%</h3>
-                                <p class="text-muted">Code Quality</p>
+                                <p class="text-secondary">Code Quality</p>
                             </div>
                             <div class="col-6">
                                 <h3 class="terminal-prompt">24/7</h3>
-                                <p class="text-muted">Support Available</p>
+                                <p class="text-secondary">Support Available</p>
                             </div>
                             <div class="col-6">
                                 <h3 class="terminal-prompt">5+</h3>
-                                <p class="text-muted">Years Experience</p>
+                                <p class="text-secondary">Years Experience</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row mt-5">
+                <div class="col-lg-6">
+                    <h5 class="section-title text-warning">Technology Stack</h5>
+                    <div class="card card-linux p-3">
+                        <div class="chart-container">
+                            <canvas id="techChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="section-title text-warning">Monthly Projects</h5>
+                    <div class="card card-linux p-3">
+                        <div class="chart-container">
+                            <canvas id="projectChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -255,69 +250,10 @@
         </div>
     </footer>
 
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form validation
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                const forms = document.getElementsByClassName('needs-validation');
-                Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        } else {
-                            event.preventDefault();
-                            alert('Message sent successfully!\n\nTerima kasih! Pesan Anda telah dikirim.');
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
-
-        // Active navigation highlighting
-        window.addEventListener('scroll', function () {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

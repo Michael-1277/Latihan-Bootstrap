@@ -1,70 +1,76 @@
- :root {
-     --terminal-green: #00ff00;
-     --terminal-dark: #0d1117;
-     --ubuntu-orange: #e95420;
-     --linux-blue: #0066cc;
- }
+:root {
+    --terminal-green: #00ff00;
+    --terminal-dark: #0d1117;
+    --ubuntu-orange: #e95420;
+    --linux-blue: #0066cc;
+}
 
- body {
-     font-family: 'Courier New', monospace;
-     background-color: #1e1e1e;
-     color: #ffffff;
- }
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
 
- .terminal-prompt {
-     color: var(--terminal-green);
- }
+.terminal-prompt {
+    color: var(--terminal-green);
+}
 
- .section-title {
-     border-left: 4px solid var(--ubuntu-orange);
-     padding-left: 1rem;
-     margin-bottom: 2rem;
- }
+.section-title {
+    border-left: 4px solid var(--ubuntu-orange);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
 
- .card-linux {
-     background-color: #2d3748;
-     border: 1px solid #4a5568;
-     transition: all 0.3s ease;
- }
+.card-linux {
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    transition: all 0.3s ease;
+}
 
- .card-linux:hover {
-     border-color: var(--terminal-green);
-     box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
- }
+.card-linux:hover {
+    border-color: var(--terminal-green);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
 
- .btn-terminal {
-     background-color: var(--terminal-dark);
-     border: 2px solid var(--terminal-green);
-     color: var(--terminal-green);
-     font-family: 'Courier New', monospace;
- }
+.btn-terminal {
+    background-color: var(--terminal-dark);
+    border: 2px solid var(--terminal-green);
+    color: var(--terminal-green);
+    font-family: 'Courier New', monospace;
+}
 
- .btn-terminal:hover {
-     background-color: var(--terminal-green);
-     color: var(--terminal-dark);
- }
+.btn-terminal:hover {
+    background-color: var(--terminal-green);
+    color: var(--terminal-dark);
+}
 
- .progress-bar-linux {
-     background-color: var(--ubuntu-orange);
- }
+.progress-bar-linux {
+    background-color: var(--ubuntu-orange);
+}
 
- .typewriter {
-     overflow: hidden;
-     white-space: nowrap;
-     animation: typing 3s steps(40, end);
- }
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end);
+}
 
- @keyframes typing {
-     from {
-         width: 0
-     }
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
 
-     to {
-         width: 100%
-     }
- }
+.img-logo {
+    width: 30px;
+    height: 30px;
+}
 
- .img-logo {
-     width: 30px;
-     height: 30px;
- }
+.nav-link.active {
+    color: var(--terminal-green) !important;
+    font-weight: bold;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    margin: 20px 0;
+}
