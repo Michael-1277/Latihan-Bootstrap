@@ -13,32 +13,32 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" 
-     style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('assets/img/head-bg.png');; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;"">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="assets/img/logo.png" alt="My Logo" class="img-logo">
-                <span class="terminal-prompt">MICHAEL.ID</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+        style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('assets/img/head-bg.png');; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;"">
+        <div class=" container">
+        <a class="navbar-brand" href="#">
+            <img src="assets/img/logo.png" alt="My Logo" class="img-logo">
+            <span class="terminal-prompt">MICHAEL.ID</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
         </div>
     </nav>
 
@@ -52,10 +52,11 @@
                         Welcome to My Portfolio
                     </h1>
                     <p class="lead mb-4 text-light">
-                        <span class="terminal-prompt">#</span> Hi, I'm Michael Nugroho 
+                        <span class="terminal-prompt">#</span> Hi, I'm Michael Nugroho
                     </p>
                     <p class="mb-4 text-secondary">
-                        Crafting innovative technology solutions with modern development practices. Specializing in full-stack development, 
+                        Crafting innovative technology solutions with modern development practices. Specializing in
+                        full-stack development,
                         system architecture, and building scalable applications.
                     </p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
@@ -79,6 +80,21 @@
                     <button class="btn btn-terminal mb-4">Services</button>
                 </div>
             </div>
+            <?php
+            $servername = "localhost";
+            $username = "username";
+            $password = "password";
+            $dbname = "mydb";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            echo "Connected successfully";
+            ?>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card card-linux h-100">
@@ -134,7 +150,8 @@
                         <span class="terminal-prompt">console.log('developer-info')</span>
                     </p>
                     <p class="text-light">
-                        A passionate software developer with 5+ years of experience in full-stack development and system design.
+                        A passionate software developer with 5+ years of experience in full-stack development and system
+                        design.
                         Committed to writing clean, efficient code and staying current with emerging technologies.
                     </p>
 
