@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web-Bootstrap</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
@@ -137,96 +138,159 @@
 
     <!-- About Section -->
     <section id="about" class="py-5" style="background-color: #2d3748;">
+        <?php
+        include 'connect.php';
+
+        // Set defaults
+        $project_count = 0;
+        $satisfaction_pct = 0;
+        $satisfied_count = 0;
+        $total_fb = 0;
+        $since_year = 2023;
+        $years_exp = date('Y') - $since_year;
+
+        // Count projects
+        $proj_res = $conn->query("SELECT COUNT(*) as total FROM projects");
+        if ($proj_res) {
+            $row = $proj_res->fetch_assoc();
+            $project_count = $row['total'] ?? 0;
+        }
+
+        // Calculate satisfaction
+        $fb_res = $conn->query("SELECT COUNT(*) as total, SUM(CASE WHEN is_satisfied = 1 THEN 1 ELSE 0 END) as satisfied FROM user_feedback");
+        if ($fb_res) {
+            $fb = $fb_res->fetch_assoc();
+            $total_fb = $fb['total'] ?? 0;
+            $satisfied_count = $fb['satisfied'] ?? 0;
+            if ($total_fb > 0) {
+                $satisfaction_pct = round(($satisfied_count / $total_fb) * 100, 1);
+            }
+        }
+        $conn->close();
+        ?>
+
         <div class="container">
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <button class="btn btn-terminal mb-4">About</button>
-                </div>
-            </div>
+                <!-- Rest of your code continues here... -->
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-lg-8 text-center">
+                            <button class="btn btn-terminal mb-4">About</button>
+                        </div>
+                    </div>
 
-            <div class="row align-items-center">
-                <!-- Left: About Text -->
-                <div class="col-lg-6 mb-4">
-                    <p class="text-light mb-4">
-                        <span class="terminal-prompt">console.log('developer-info')</span>
-                    </p>
-                    <p class="text-light">
-                        A passionate software developer with
-                        experience in full-stack development and system design.
-                        Committed to writing clean, efficient code and staying current with emerging technologies.
-                    </p>
-                    <p class="text-light">
-                        <span class="terminal-prompt text-success">></span>
-                        <span class="text-secondary">Location:</span>
-                        <span class="text-info">Surakarta, Indonesia</span>
-                    </p>
-                </div>
+                    <div class="row">
+                        <!-- Left: About Text + Pie Chart -->
+                        <div class="col-lg-6 mb-4">
+                            <p class="text-light mb-4">
+                                <span class="terminal-prompt">console.log('developer-info')</span>
+                            </p>
+                            <p class="text-light">
+                                A passionate software developer with
+                                experience in full-stack development and system design.
+                                Committed to writing clean, efficient code and staying current with emerging
+                                technologies.
+                            </p>
+                            <p class="text-light">
+                                <span class="terminal-prompt text-success">></span>
+                                <span class="text-secondary">Location:</span>
+                                <span class="text-info">Surakarta, Indonesia</span>
+                            </p>
 
-                <!-- Right: Achievement Metrics -->
-                <div class="col-lg-6">
-                    <h5 class="section-title text-warning mb-4">Achievement Metrics</h5>
-                    <div class="card card-linux p-4">
-                        <div class="row text-center">
-                            <?php
-                            include 'connect.php';
-
-                            // 1. Auto-calculate years experience
-                            $since_year = 2023; // CHANGE THIS to your start year
-                            $years_exp = date('Y') - $since_year;
-
-                            // 2. Count completed projects
-                            $proj_sql = "SELECT COUNT(*) as total FROM projects";
-                            $proj_res = $conn->query($proj_sql);
-                            $project_count = ($proj_res && $proj_res->num_rows > 0) ? $proj_res->fetch_assoc()['total'] : 0;
-
-                            // 3. Calculate client satisfaction percentage
-                            $fb_sql = "SELECT COUNT(*) as total, SUM(CASE WHEN is_satisfied = 1 THEN 1 ELSE 0 END) as satisfied FROM user_feedback";
-                            $fb_res = $conn->query($fb_sql);
-                            if ($fb_res && $fb_res->num_rows > 0) {
-                                $fb = $fb_res->fetch_assoc();
-                                $satisfaction_pct = ($fb['total'] > 0) ? round(($fb['satisfied'] / $fb['total']) * 100, 1) : 0;
-                                $satisfied_count = $fb['satisfied'];
-                                $total_fb = $fb['total'];
-                            } else {
-                                $satisfaction_pct = 0;
-                                $satisfied_count = 0;
-                                $total_fb = 0;
-                            }
-                            $conn->close();
-                            ?>
-
-                            <div class="row text-center">
-                                <!-- Projects -->
-                                <div class="col-6 mb-3">
-                                    <h3 class="terminal-prompt text-success mb-2"><?php echo $project_count; ?>+</h3>
-                                    <p class="text-secondary small mb-0">Projects Completed</p>
+                            <!-- Pie Chart Below Text -->
+                            <div class="mt-5 p-4 card card-linux">
+                                <h6 class="text-warning mb-3 text-center">Client Satisfaction Rate</h6>
+                                <div style="max-width: 250px; margin: 0 auto;">
+                                    <canvas id="satisfactionChart"></canvas>
                                 </div>
+                                <p class="text-secondary small text-center mt-3 mb-0">
+                                    <?php echo $satisfaction_pct; ?>% Satisfaction
+                                    (<?php echo $satisfied_count; ?>/<?php echo $total_fb; ?>)
+                                </p>
+                            </div>
+                        </div>
 
-                                <!-- Satisfaction -->
-                                <div class="col-6 mb-3">
-                                    <h3 class="terminal-prompt text-success mb-2"><?php echo $satisfaction_pct; ?>%</h3>
-                                    <p class="text-secondary small mb-0">Client Satisfaction</p>
-                                </div>
+                        <!-- Right: Achievement Metrics (Only 3) -->
+                        <div class="col-lg-6">
+                            <h5 class="section-title text-warning mb-4">Achievement Metrics</h5>
+                            <div class="card card-linux p-4">
+                                <div class="row">
+                                    <!-- Projects -->
+                                    <div class="col-12 mb-4 text-center">
+                                        <h3 class="terminal-prompt text-success mb-2"><?php echo $project_count; ?>+
+                                        </h3>
+                                        <p class="text-secondary small mb-0">Projects Completed</p>
+                                    </div>
 
-                                <!-- Support (Hardcoded) -->
-                                <div class="col-6 mb-3">
-                                    <h3 class="terminal-prompt text-success mb-2">24/7</h3>
-                                    <p class="text-secondary small mb-0">Support Available</p>
-                                </div>
+                                    <!-- Support -->
+                                    <div class="col-6 mb-3 text-center">
+                                        <h3 class="terminal-prompt text-success mb-2">24/7</h3>
+                                        <p class="text-secondary small mb-0">Support Available</p>
+                                    </div>
 
-                                <!-- Experience (Auto) -->
-                                <div class="col-6 mb-3">
-                                    <h3 class="terminal-prompt text-success mb-2"><?php echo $years_exp; ?>+</h3>
-                                    <p class="text-secondary small mb-0">Years Experience</p>
+                                    <!-- Experience -->
+                                    <div class="col-6 mb-3 text-center">
+                                        <h3 class="terminal-prompt text-success mb-2"><?php echo $years_exp; ?>+</h3>
+                                        <p class="text-secondary small mb-0">Years Experience</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        </div>
     </section>
+
+    <script>
+        // Pie Chart
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('satisfactionChart');
+            if (!ctx) return;
+
+            const satisfiedCount = <?php echo $satisfied_count ?? 0; ?>;
+            const notSatisfiedCount = <?php echo ($total_fb ?? 0) - ($satisfied_count ?? 0); ?>;
+            const totalFeedback = <?php echo $total_fb ?? 0; ?>;
+
+            new Chart(ctx.getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Satisfied', 'Not Satisfied'],
+                    datasets: [{
+                        data: [satisfiedCount, notSatisfiedCount],
+                        backgroundColor: ['#28a745', '#dc3545'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                color: '#adb5bd',
+                                font: { size: 11 },
+                                boxWidth: 12,
+                                padding: 8
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const pct = totalFeedback > 0 ? ((value / totalFeedback) * 100).toFixed(1) : 0;
+                                    return label + ': ' + value + ' (' + pct + '%)';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%'
+                }
+            });
+        });
+    </script>
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-dark">
         <div class="container">
