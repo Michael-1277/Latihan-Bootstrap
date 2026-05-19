@@ -94,18 +94,6 @@
                     }
                 }
 
-                // Fallback if empty
-                if (empty($services)) {
-                    $services = [
-                        ['name' => 'Backend Development', 'description' => 'Building robust server-side applications and APIs.'],
-                        ['name' => 'Full Stack Development', 'description' => 'Creating modern web applications using React, Node.js, Python.'],
-                        ['name' => 'DevOps & Automation', 'description' => 'CI/CD pipelines, Docker, cloud deployment.'],
-                        ['name' => 'Cloud Architecture', 'description' => 'Scalable cloud infrastructure on AWS, Azure, GCP.'],
-                        ['name' => 'Mobile Development', 'description' => 'Cross-platform apps using React Native and Flutter.'],
-                        ['name' => 'UI/UX Design', 'description' => 'Intuitive interfaces with modern design principles.']
-                    ];
-                }
-
                 foreach ($services as $index => $service) {
                     $hidden = ($index >= 3) ? 'service-item d-none' : 'service-item';
                     echo '<div class="col-md-4 ' . $hidden . '">';
@@ -115,6 +103,7 @@
                     echo '<p class="card-text text-light">' . htmlspecialchars($service['description']) . '</p>';
                     echo '</div></div></div>';
                 }
+                $conn->close();
                 ?>
             </div>
 
@@ -203,6 +192,7 @@
                                 $satisfied_count = 0;
                                 $total_fb = 0;
                             }
+                            $conn->close();
                             ?>
 
                             <div class="row text-center">
